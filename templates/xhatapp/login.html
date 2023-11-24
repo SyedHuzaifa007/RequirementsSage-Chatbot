@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>RequirementSage-Login</title>
+  <!-- Required meta tags -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="ChatGPT - Login">
+  <link rel="icon" href="https://arcane.com/static/arcane-logo-r-c5c6e8cc377f92f125e50baf52988a87.png">
+
+  <!-- Bootstrap CSS v5.2.1 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+  <style>
+    /* Add your custom styles here */
+    body {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      background: white;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .login-container {
+      width: 856.58px;
+      height: 725.29px;
+      left: 37px;
+      top: 159px;
+      position: absolute;
+    }
+
+    .card {
+      width: 482.37px;
+      height: 104.10px;
+      left: 186.97px;
+      top: 554.38px;
+      position: absolute;
+      background: #24798C;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card-text {
+      color: white;
+      font-size: 24px;
+      font-weight: 300;
+      text-align: center;
+      word-wrap: break-word;
+    }
+
+    .form-label {
+      color: black;
+      font-size: 20px;
+      font-weight: 300;
+    }
+
+    .form-control {
+      background: white;
+      color: black;
+    }
+
+    .btn-primary {
+      background-color: #24798C;
+      border-color: #24798C;
+      font-size: 20px;
+      font-weight: 300;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .social-login {
+      width: 644px;
+      height: 163.65px;
+      left: 115px;
+      top: 911px;
+      position: absolute;
+    }
+
+    .social-text {
+      color: black;
+      font-size: 20px;
+      font-weight: 300;
+      text-align: center;
+      word-wrap: break-word;
+    }
+
+    .social-button {
+      background: #D9D9D9;
+    }
+
+    .create-account {
+      width: 842px;
+      height: 1278.85px;
+      left: 1077px;
+      top: -0.20px;
+      position: absolute;
+      background: #24798C;
+      text-align: center;
+    }
+
+    .create-account-text {
+      color: white;
+      font-size: 66px;
+      font-weight: 700;
+      word-wrap: break-word;
+    }
+
+    .sign-up {
+      background: linear-gradient(0deg, #D9D9D9 0%, #D9D9D9 100%), linear-gradient(0deg, rgba(216, 218, 218, 0.20) 0%, rgba(216, 218, 218, 0.20) 100%);
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .sign-up-text {
+      color: black;
+      font-size: 40px;
+      font-weight: 700;
+      word-wrap: break-word;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container login-container">
+    <div class="card">
+      <div class="card-text">Sign in</div>
+    </div>
+    <h1 class="text-center">Login</h1>
+    <form action="{% url 'indexpage' %}" method="POST">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="Username" class="form-label">Username:</label>
+        <input type="text" class="form-control" name="Username" id="Username" placeholder="Enter your username" required>
+      </div>
+      <div class="mb-3">
+        <label for="passsw" class="form-label">Password:</label>
+        <input type="password" class="form-control" name="passsw" id="passsw" placeholder="Enter your password" required>
+      </div>
+      <div class="d-grid gap-2">
+        <button class="btn btn-primary" type="submit">Login</button>
+      </div>
+    </form>
+    <p class="mt-3 text-center">Don't have an account? <a href="{% url 'createeacc' %}">Create Account</a></p>
+  </div>
+
+  <div class="social-login">
+    <div class="social-text">Login using social networks</div>
+    <div class="social-button" style="width: 267px; height: 37px; left: 191px; top: 122px; position: absolute;"></div>
+    <div class="social-button" style="width: 267px; height: 37px; left: 191px; top: 47px; position: absolute;"></div>
+    <div class="social-text" style="width: 249px; left: 201px; top: 53px; position: absolute;">Continue with Facebook</div>
+    <div class="social-text" style="width: 229px; left: 210px; top: 130px; position: absolute;">Continue with Google</div>
+  </div>
+
+  <div class="create-account">
+    <div class="create-account-text">New Here ?<br/>Create your Account Now !</div>
+    <div class="sign-up" style="width: 273px; height: 87px; left: 318.32px; top: 723.51px; position: absolute;"></div>
+    <div class="sign-up-text" style="width: 156px; left: 377.29px; top: 752.56px; position: absolute;">Sign Up</div>
+  </div>
+
+  <!-- Bootstrap JavaScript Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNf
+    iDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+    integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+</body>
+
+</html>
