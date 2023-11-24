@@ -66,12 +66,13 @@
     <div class="form-container">
       <h1>Let's Get Started!</h1>
       <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
         <input type="text" name="name" placeholder="Name">
         <input type="email" name="email" placeholder="Email">
         <input type="password" name="password" placeholder="Password">
         <input type="password" name="confirm_password" placeholder="Confirm Password">
         <button type="submit">Sign up</button>
-      </form>
+    </form>
       <p>Already have an account? <a href="{% url 'indexpage' %}">Login</a></p>
     </div>
   </div>

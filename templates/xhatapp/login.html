@@ -17,7 +17,7 @@
   <style>
     /* Add your custom styles here */
     body {
-      width: 100%;
+      width:100%;
       height: 100%;
       position: relative;
       background: white;
@@ -31,27 +31,6 @@
       top: 159px;
       position: absolute;
     }
-
-    .card {
-      width: 482.37px;
-      height: 104.10px;
-      left: 186.97px;
-      top: 554.38px;
-      position: absolute;
-      background: #24798C;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .card-text {
-      color: white;
-      font-size: 24px;
-      font-weight: 300;
-      text-align: center;
-      word-wrap: break-word;
-    }
-
     .form-label {
       color: black;
       font-size: 20px;
@@ -97,16 +76,18 @@
     .create-account {
       width: 842px;
       height: 1278.85px;
-      left: 1077px;
+      left: 950px;
       top: -0.20px;
       position: absolute;
-      background: #24798C;
+      background: #38575e;
       text-align: center;
     }
 
     .create-account-text {
       color: white;
-      font-size: 66px;
+      font-size: 33px;
+      margin-right:250px;
+      top:3px;
       font-weight: 700;
       word-wrap: break-word;
     }
@@ -114,22 +95,32 @@
     .sign-up {
       background: linear-gradient(0deg, #D9D9D9 0%, #D9D9D9 100%), linear-gradient(0deg, rgba(216, 218, 218, 0.20) 0%, rgba(216, 218, 218, 0.20) 100%);
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      top:-350px;
+      margin-top: -400px;
+      margin-right:250px;
+      margin-left:-150px;
+      border-radius: 15%;
     }
 
     .sign-up-text {
       color: black;
-      font-size: 40px;
+      font-size: 33px;
       font-weight: 700;
+      top:-250px;
+      margin-top: -420px;
+      margin-right:250px;
+      margin-left:-150px;
       word-wrap: break-word;
+    }
+    .moveup-facebook
+    {
+      top:0px;
     }
   </style>
 </head>
 
 <body>
   <div class="container login-container">
-    <div class="card">
-      <div class="card-text">Sign in</div>
-    </div>
     <h1 class="text-center">Login</h1>
     <form action="{% url 'indexpage' %}" method="POST">
       {% csrf_token %}
@@ -149,16 +140,15 @@
   </div>
 
   <div class="social-login">
-    <div class="social-text">Login using social networks</div>
-    <div class="social-button" style="width: 267px; height: 37px; left: 191px; top: 122px; position: absolute;"></div>
-    <div class="social-button" style="width: 267px; height: 37px; left: 191px; top: 47px; position: absolute;"></div>
-    <div class="social-text" style="width: 249px; left: 201px; top: 53px; position: absolute;">Continue with Facebook</div>
-    <div class="social-text" style="width: 229px; left: 210px; top: 130px; position: absolute;">Continue with Google</div>
+    <div class="social-button" style="width: 267px; height:30px; left: 220px; top: -420px; position: absolute;"></div>
+    <div class="social-button" style="width: 267px; height:30px; left: 220px; top: -370px; position: absolute;"></div>
+    <div class="social-text" style="width: 267px; height:460px; left: 220px; top: -420px; position: absolute;">Continue with Facebook</div>
+    <div class="social-text" style="width: 267px; height:460px; left: 220px; top: -370px; position: absolute;">Continue with Google</div>
   </div>
 
   <div class="create-account">
     <div class="create-account-text">New Here ?<br/>Create your Account Now !</div>
-    <div class="sign-up" style="width: 273px; height: 87px; left: 318.32px; top: 723.51px; position: absolute;"></div>
+    <div class="sign-up" style="width: 273px; height: 67px; left: 318.32px; top: 723.51px; position: absolute;"></div>
     <div class="sign-up-text" style="width: 156px; left: 377.29px; top: 752.56px; position: absolute;">Sign Up</div>
   </div>
 
