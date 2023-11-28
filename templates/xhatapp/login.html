@@ -17,9 +17,9 @@
   <style>
     /* Add your custom styles here */
     body {
-      width:100%;
-      height: 100%;
-      position: relative;
+      width:1600px;
+      height: 900px;
+      position: fixed;
       background: white;
       font-family: 'Inter', sans-serif;
     }
@@ -50,6 +50,7 @@
     }
 
     .text-center {
+      font-weight:700;
       text-align: center;
     }
 
@@ -79,16 +80,17 @@
       left: 950px;
       top: -0.20px;
       position: absolute;
-      background: #38575e;
+      background: #24798C;
       text-align: center;
     }
 
     .create-account-text {
+      text-align: center;
       color: white;
       font-size: 33px;
       margin-right:250px;
       top:3px;
-      font-weight: 700;
+      font-weight: 600;
       word-wrap: break-word;
     }
 
@@ -96,18 +98,20 @@
       background: linear-gradient(0deg, #D9D9D9 0%, #D9D9D9 100%), linear-gradient(0deg, rgba(216, 218, 218, 0.20) 0%, rgba(216, 218, 218, 0.20) 100%);
       box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
       top:-350px;
-      margin-top: -400px;
+      margin-top: -330px;
       margin-right:250px;
       margin-left:-150px;
-      border-radius: 15%;
     }
-
+.sign-upcolor{
+  color:black;
+}
     .sign-up-text {
-      color: black;
+      
+      text-decoration: none;
       font-size: 33px;
       font-weight: 700;
       top:-250px;
-      margin-top: -420px;
+      margin-top: -350px;
       margin-right:250px;
       margin-left:-150px;
       word-wrap: break-word;
@@ -126,30 +130,29 @@
       {% csrf_token %}
       <div class="mb-3">
         <label for="Username" class="form-label">Username:</label>
-        <input type="text" class="form-control" name="Username" id="Username" placeholder="Enter your username" required>
+        <input type="text"class="form-control" name="Username" id="Username" placeholder="Enter your username" required>
       </div>
       <div class="mb-3">
         <label for="passsw" class="form-label">Password:</label>
         <input type="password" class="form-control" name="passsw" id="passsw" placeholder="Enter your password" required>
       </div>
       <div class="d-grid gap-2">
-        <button class="btn btn-primary" type="submit">Login</button>
+        <button class="btn btn-primary"type="submit">Login</button>
+        <a href="url{ }" style="width:200px;">Forgot Password?</button>
       </div>
     </form>
-    <p class="mt-3 text-center">Don't have an account? <a href="{% url 'createeacc' %}">Create Account</a></p>
   </div>
-
   <div class="social-login">
     <div class="social-button" style="width: 267px; height:30px; left: 220px; top: -420px; position: absolute;"></div>
     <div class="social-button" style="width: 267px; height:30px; left: 220px; top: -370px; position: absolute;"></div>
-    <div class="social-text" style="width: 267px; height:460px; left: 220px; top: -420px; position: absolute;">Continue with Facebook</div>
-    <div class="social-text" style="width: 267px; height:460px; left: 220px; top: -370px; position: absolute;">Continue with Google</div>
+    <div  class="social-text" style="width: 267px; height:460px; left: 220px; top: -420px; position: absolute;"><a href="https://facebook.com" style="color:black;text-decoration:none;">Continue with Facebook</a></div>
+    <div class="social-text" style="width: 267px; height:460px; left: 220px; top: -370px; position: absolute;"><a href="https://Google.com" style="color:black;text-decoration:none;" src="/templates/src/fb.png" >Continue with Google</a></div>
   </div>
 
   <div class="create-account">
-    <div class="create-account-text">New Here ?<br/>Create your Account Now !</div>
+    <div class="create-account-text"style="margin-top:175px;font-size:50px">New Here ? <br/> Create your Account Now!</div>
     <div class="sign-up" style="width: 273px; height: 67px; left: 318.32px; top: 723.51px; position: absolute;"></div>
-    <div class="sign-up-text" style="width: 156px; left: 377.29px; top: 752.56px; position: absolute;">Sign Up</div>
+    <div class="sign-up-text sign-upcolor" style="width: 156px; left: 377.29px; top: 752.56px; position: absolute;"><a href="{% url 'createeacc' %} "style="color:black;text-decoration:none;">Sign Up</a></div>
   </div>
 
   <!-- Bootstrap JavaScript Libraries -->

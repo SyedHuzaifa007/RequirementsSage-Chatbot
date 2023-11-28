@@ -43,15 +43,15 @@
   </nav>
   
     <!-- Sec nav -->
-    <nav class="navbar navbar-expand-sm navbar-light bg-light fixed-bottom">
+    <nav class="navbar navbar-expand-sm navbar-light fixed-bottom"style="background-color:black">
       <div class="container">
           <!-- <a class="navbar-brand" href="#">ChatGpt</a> -->
-          <div class="card bg-primary" style="width: 100%;">
-              <div class="card-body">
+          <div class="card" style="width: 100%;background-color: black;">
+              <div class="card-body" style="background-color:black;">
                   <form method="POST">
                       {% csrf_token %}
                       <div class="input-group mb-0 pb-0">
-                          <input type="text" name="queryinput" class="form-control bg-light" placeholder="What kind of software you want to make?">
+                          <input type="text" name="queryinput" class="form-control bg-light" placeholder="What kind of Project Requirements You Want to know?" >
                           <div class="input-group-append">
                               <button class="btn btn-secondary" type="submit">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
