@@ -8,7 +8,7 @@ import openai
 class BravoSis:
     def __init__(self):
         self.openai_api_key = "" # set your own api value
-        self.openai_api_key = "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" #get this value from https://beta.openai.com/.
+        self.openai_api_key = "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" #get this value from https://beta.openai.com/.
         self.model = "text-davinci-003" # use any of these [text-davinci-002,text-davinci-001]
         self.mxtoken = 1080 #can decrese/increse with reaspect to result previlage
 
