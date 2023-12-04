@@ -16,13 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from xhatapp import views
-
+from django.contrib.auth import views as auth_views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('',views.login_usr,name='indexpage'),
-    # path('login',views.login_usr,name="llooggin"),
+    path('login',views.login_usr,name="llooggin"),
     path('Xhat/',include('xhatapp.urls')),
     path("check",views.query,name="xhat"),
     path('Signin',views.create,name='createeacc'),
-    path('logout',views.usr_logout,name="logggout")
-]
+    path('logout',views.usr_logout,name="logggout"),
+    path('password_reset',views.forgot,name="password_reset"),
+    path('password_reset_done',views.forgotdone,name="password_reset_done"),
+  ]

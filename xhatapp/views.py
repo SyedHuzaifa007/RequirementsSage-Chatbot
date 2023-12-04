@@ -13,6 +13,19 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.contrib.auth.models import User
+from django.core.mail import send_mail
+from django.conf import settings
+from django.utils.crypto import get_random_string
+from django.urls import reverse
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.http import urlsafe_base64_encode
+from django.utils.encoding import force_bytes
+from django.template.loader import render_to_string
+from django.http import HttpResponseBadRequest
+
 
 
 # initializing 
@@ -42,19 +55,17 @@ def query(request):
         ss = SaveQueries(question=nice,returnquery=result,query_time=timezone.now()) #need to check if this is working 
         ss.save()
         tim = timezone.now()
-        # my_result_dict = SaveQueries.objects.order_by('-query_time')
-        print(tim)
-        # print(my_result_dict)
-        # for data in my_result_dict:
-        #     print(data.question)
+        # my_result_dict = SaveQueries.objec ts.order_by('-query_time')
+        print(tim) 
+        # print(my_result_dict) 
+        # for data in my_result_dict: 
+        #     print(data.question) 
         #     print(data.returnquery)
         #     print(data.query_time)
         # my_result_dict = {'query':nice,'resul':result}
 
     # return render(request, 'xhatapp/index.html', context=my_result_dict)
     return render(request, 'xhatapp/index.html',{'query':nice,'resul':result})
-
-
 def create(request):
     acc_created = False
 
@@ -102,8 +113,25 @@ def login_usr(request):
             return HttpResponse("OOpppzz Invalid Login Details....")
     else:
         return render(request, 'xhatapp/login.html')
-
+    
 @login_required
 def usr_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('indexpage'))
+
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.contrib.auth.forms import PasswordResetForm
+from django.contrib.auth.views import PasswordResetView
+
+def forgot(request):
+    if request.method == 'POST':
+        form = PasswordResetForm(request.POST)
+        if form.is_valid():
+            return render(request, 'password_reset_done.html', {})
+    else:
+        form = PasswordResetForm()
+
+    return render(request, 'password_reset.html', {'form': form})   
+def forgotdone(request):
+    return render(request,"login.html")
