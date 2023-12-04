@@ -1,0 +1,11 @@
+{% comment %} {% extends 'xhatapp/base.html' %} {% endcomment %}
+{% extends 'xhatapp/index.html' %}
+<!-- chatbot.html -->
+<form method="post">
+    {% csrf_token %}
+    <!-- Display fetched data with checkboxes -->
+    {% for item in fetched_data %}
+        <input type="checkbox" name="selected_items" value="{{ item }}">{{ item }}<br>
+    {% endfor %}
+    <input type="submit" value="Save Selection">
+  </form>

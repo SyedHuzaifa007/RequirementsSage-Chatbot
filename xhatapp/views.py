@@ -4,6 +4,11 @@ from xhatapp.Config import BravoSis
 from xhatapp.form import usserform
 # from datetime import datetime 
 from django.utils import timezone
+from django.http import HttpResponse
+from reportlab.pdfgen import canvas
+from django.contrib.auth.models import AnonymousUser
+from .models import SelectedItems
+
 # Create your views here.
 
 
@@ -135,3 +140,45 @@ def forgot(request):
     return render(request, 'password_reset.html', {'form': form})   
 def forgotdone(request):
     return render(request,"login.html")
+
+
+def chatbot_view(request):
+    fetched_data = ["Requirement 1", "Requirement 2", "Requirement 3"]  # Sample fetched data
+
+    if request.method == 'POST':
+        selected_items = request.POST.getlist('selected_items')
+
+        if isinstance(request.user, AnonymousUser):
+            # For anonymous users - Handle accordingly (e.g., associate data with sessions)
+            for item in selected_items:
+                SelectedItems.objects.create(selected_item=item)
+        else:
+            user = request.user
+            for item in selected_items:
+                SelectedItems.objects.create(user=user, selected_item=item)
+
+    return render(request, 'xhatapp/chatbot.html', {'fetched_data': fetched_data})
+
+def export_to_pdf(request):
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="selected_items.pdf"'
+
+    selected_items = SelectedItems.objects.filter(user=request.user) if request.user.is_authenticated else SelectedItems.objects.none()
+
+    try:
+        pdf = canvas.Canvas(response)
+        pdf.drawString(100, 800, 'Selected Items:')
+        y = 780
+
+        for item in selected_items:
+            pdf.drawString(120, y, item.selected_item)
+            y -= 20
+
+        pdf.showPage()
+        pdf.save()
+        return response
+    except Exception as e:
+        print(f"An error occurred while generating PDF: {e}")
+        return HttpResponse(status=500)  # Return an error response if PDF generation fails
+
+

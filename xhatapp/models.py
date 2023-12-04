@@ -19,3 +19,10 @@ class UserInfo(models.Model):
 
     def __str__(self):
         return self.user.username
+
+class SelectedItems(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    selected_item = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.selected_item
