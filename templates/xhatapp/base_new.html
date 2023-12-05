@@ -3,16 +3,19 @@
 
 <head>
     <title>RequirementsSage-Chatbot</title>
+    <!-- Required meta tags -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="https://arcane.com/static/arcane-logo-r-c5c6e8cc377f92f125e50baf52988a87.png">
   
+    <!-- Bootstrap CSS v5.2.1 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
+  <!-- Bootstrap JavaScript and Popper.js -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
       integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
@@ -25,6 +28,10 @@
         color: #fff;
       }
   
+      .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
   
       .input-group-append button {
         margin-right: 10px;
@@ -32,7 +39,6 @@
     </style>
 </head>
 
-<body class="text-bg-light">
 <nav class="navbar navbar-expand-lg" style="background-color: #24798C;">
     <div class="container-fluid">
       <a class="navbar-brand" href="{% url 'xhat' %}" style="text-align: center;">RequirementsSage Chatbot</a>
@@ -59,13 +65,9 @@
       </div>
     </div>
   </nav>  
-
-<!-- Hamburger Button for Chats -->
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft">
-  Chats
-</button>
-
+  
 <body class="text-bg-light">
+  <header>
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel">
         <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="offcanvasLeftLabel">Chats</h5>
@@ -81,77 +83,40 @@
           </ul>
         </div>
       </div>
-<header>
+  
+      <!-- Hamburger Button for Chats -->
+      <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft">
+        Chats
+      </button>
+  
+  
     <!-- Sec nav -->
-    
+    <nav class="navbar navbar-expand-sm navbar-light fixed-bottom"style="background-color:light">
+      <div class="container">
+          <!-- <a class="navbar-brand" href="#">ChatGpt</a> -->
+          <div class="card" style="width: 100%;background-color: black;">
+              <div class="card-body" style="background-color:black;">
+                  <form method="POST">
+                      {% csrf_token %}
+                      <div class="input-group mb-0 pb-0">
+                          <input type="text" name="queryinput" class="form-control bg-light" placeholder="What kind of Project Requirements You Want to know?" >
+                          <div class="input-group-append">
+                              <button class="btn btn-secondary" type="submit">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+                                      <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
+                                  </svg>
+                              </button>
+                          </div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </nav>
+  
   </header>
   
-  
-  <main class="mt-3">
-  <div class="container mt-4" class = "card hover-card">
-    <div class="row">
-      <div class="col-md-3 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <button class="btn btn-secondary" type="button" onclick="sendQuery('Question 1')">
-            <p class="card-text">What are the essential features of an E-commerce system?</p>
-        </button>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <button class="btn btn-secondary" type="button" onclick="sendQuery('Question 1')">
-            <p class="card-text">What are the essential features of an E-commerce system?</p>
-        </button>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <button class="btn btn-secondary" type="button" onclick="sendQuery('Question 1')">
-            <p class="card-text">What are the essential features of an E-commerce system?</p>
-        </button>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <button class="btn btn-secondary" type="button" onclick="sendQuery('Question 1')">
-            <p class="card-text">What are the essential features of an E-commerce system?</p>
-        </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</main>
-<footer>
-  <nav class="navbar navbar-expand-sm navbar-light fixed-bottom" style="background-color: light;">
-    <div class="container d-flex justify-content-center">
-      <div class="card text-center" style="width: 50%; background-color: black;">
-        <div class="card-body" style="background-color:black;">
-          <form method="POST">
-            {% csrf_token %}
-            <div class="input-group">
-              <input type="text" name="queryinput" class="form-control bg-light" placeholder="How can I assist you with your E-commerce system?" >
-              <div class="input-group-append">
-                <button class="btn btn-secondary" type="submit">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
-                    <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </nav>  
-</footer>
+
 
 
   <!-- Bootstrap JavaScript Libraries -->
@@ -173,8 +138,33 @@
     <!-- 1 checking -->
     {% block body_block %}
     {% endblock %}
+        <!-- 2 checking -->
+        <!-- <div class="container">
+            <div class="card text-bg-dark mb-3" style="height: 25rem;">
+                <div class="card-body">
+                    <h1 class="card-title">XhatGpt</h1>
+                    <p class="card-text" id="myText">its me leo....</p>
+                </div>
+            </div>
+        </div> -->
   </main>
-
+  <!-- upto block -->
+  <footer class="footer mt-auto py-3 bg-secondary">
+        <!-- <div class="container">
+            <div class="card">
+                <div class="card-body">
+                <form>
+                <div class="input-group mb-0">
+                    <input type="text" class="form-control text-bg-dark" placeholder="Type your message here...">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit">Send</button>
+                    </div>
+                </div>
+                </form>
+                </div>
+            </div>
+        </div> -->
+  </footer>
   <!-- Bootstrap JavaScript Libraries -->
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
