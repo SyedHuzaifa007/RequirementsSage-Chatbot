@@ -30,7 +30,7 @@ from django.utils.http import urlsafe_base64_encode
 from django.utils.encoding import force_bytes
 from django.template.loader import render_to_string
 from django.http import HttpResponseBadRequest
-
+from django.http import JsonResponse
 
 
 # initializing 
@@ -48,29 +48,36 @@ def about(request):
 
 @login_required
 def query(request):
-    nice = "Do you have a question you'd like me to answer?"
+    nice = ""
     result = "....."
+    
     if request.method == 'POST':
-        nice = request.POST.get('queryinput')
-        print(nice)
-        result = wow.ai(nice) #added new key # !--working but... Quata Exousted!
-        print(result)
-        # add if result is Quata Exausted later...
-        # else 'ss' & 'send msg to db channel'
-        ss = SaveQueries(question=nice,returnquery=result,query_time=timezone.now()) #need to check if this is working 
-        ss.save()
-        tim = timezone.now()
-        # my_result_dict = SaveQueries.objec ts.order_by('-query_time')
-        print(tim) 
-        # print(my_result_dict) 
-        # for data in my_result_dict: 
-        #     print(data.question) 
-        #     print(data.returnquery)
-        #     print(data.query_time)
-        # my_result_dict = {'query':nice,'resul':result}
+        user_input = request.POST.get('queryinput')
+        
+        # Check if the user input is within the defined scope for E-commerce
+        if is_within_scope(user_input):
+            result = wow.ai(user_input)
+            
+            # Save the query to the database
+            ss = SaveQueries(question=user_input, returnquery=result, query_time=timezone.now())
+            ss.save()
+        else:
+            return JsonResponse({'error': 'Input is out of scope for E-commerce requirements. Please provide a relevant query.'}, status=400)
 
-    # return render(request, 'xhatapp/index.html', context=my_result_dict)
-    return render(request, 'xhatapp/index.html',{'query':nice,'resul':result})
+    return render(request, 'xhatapp/index.html', {'query': nice, 'resul': result})
+
+def is_within_scope(user_input):
+    # Implement your logic to check if the user input is within the defined scope for E-commerce
+    # You may validate the input against certain keywords, phrases, or predefined criteria related to E-commerce requirements
+    # Replace this placeholder logic with your actual scope validation logic
+    # Return True if within scope, else return False
+    # Example placeholder logic:
+    e_commerce_keywords = ['e-commerce', 'product catalog', 'shopping cart', 'payment gateway', 'functional requirements', 'non functional requirements', 'business requirements', 'low level requirements', 'high level requirements']
+    for keyword in e_commerce_keywords:
+        if ("e-commerce" or "E-commerce" or "e commerce" or "E commerce" or "E com" or "online store" or "Online Store" or "Online Shopping" or "online shopping") and keyword.lower() in user_input.lower():
+            return True
+    return False
+
 def create(request):
     acc_created = False
 
