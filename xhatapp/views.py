@@ -189,3 +189,5 @@ def export_to_pdf(request):
         return HttpResponse(status=500)  # Return an error response if PDF generation fails
 
 
+def download(request):
+        return render(request,'Download.html')

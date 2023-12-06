@@ -22,7 +22,7 @@ from xhatapp.views import chatbot_view, export_to_pdf
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('',views.login_usr,name='indexpage'),
-    path('login',views.login_usr,name="llooggin"),
+   # path('login',views.login_usr,name="llooggin"),
     path('Xhat/',include('xhatapp.urls')),
     path("check",views.query,name="xhat"),
     path('Signin',views.create,name='createeacc'),
@@ -32,4 +32,6 @@ urlpatterns = [
     path('chatbot/', chatbot_view, name='chatbot'),
     path('export-pdf/', export_to_pdf, name='export_pdf'),
     path('export-to-pdf/', export_to_pdf, name='export_to_pdf'),
+    path('login',views.forgotdone,name="login"),
+    path('Download',views.download,name="Download"),
   ]
