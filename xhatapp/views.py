@@ -52,7 +52,7 @@ def query(request):
     result = "....."
     
     if request.method == 'POST':
-        user_input = request.POST.get('queryinput')
+        user_input = request.POST.get('queryinput') + "of E-commerce store only"
         
         # Check if the user input is within the defined scope for E-commerce
         if is_within_scope(user_input):
@@ -72,7 +72,7 @@ def is_within_scope(user_input):
     # Replace this placeholder logic with your actual scope validation logic
     # Return True if within scope, else return False
     # Example placeholder logic:
-    e_commerce_keywords = ['e-commerce', 'product catalog', 'shopping cart', 'payment gateway', 'functional requirements', 'non functional requirements', 'business requirements', 'low level requirements', 'high level requirements']
+    e_commerce_keywords = ['functional requirements', 'non functional requirements', 'business requirements', 'low level requirements', 'high level requirements', 'software requirements']
     for keyword in e_commerce_keywords:
         if ("e-commerce" or "E-commerce" or "e commerce" or "E commerce" or "E com" or "online store" or "Online Store" or "Online Shopping" or "online shopping") and keyword.lower() in user_input.lower():
             return True

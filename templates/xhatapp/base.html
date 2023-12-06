@@ -32,33 +32,34 @@
     </style>
 </head>
 
-<body class="text-bg-light">
 <nav class="navbar navbar-expand-lg" style="background-color: #24798C;">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="{% url 'xhat' %}" style="text-align: center;">RequirementsSage Chatbot</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="text-align: center;">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'xhat' %}" style="text-align: center;">Home</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="text-align: center;">
-              More Options
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#" style="text-align: center;">My Account</a></li>
-              <li><a class="dropdown-item" href="#" style="text-align: center;">My Documents</a></li>
-              <li><a class="dropdown-item" href="{% url 'xhatapp:aboutx' %}" style="text-align: center;">About Us</a></li>
-              <li><a class="dropdown-item" href="{% url 'logggout' %}" style="text-align: center;">Logout</a></li>
+    <div class="container-fluid justify-content-center">
+        <a class="navbar-brand" href="{% url 'xhat' %}">RequirementsSage Chatbot</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'xhat' %}">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        More Options
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">My Account</a></li>
+                        <li><a class="dropdown-item" href="#">My Documents</a></li>
+                        <li><a class="dropdown-item" href="{% url 'xhatapp:aboutx' %}">About Us</a></li>
+                        <li><a class="dropdown-item" href="{% url 'logggout' %}">Logout</a></li>
+                    </ul>
+                </li>
             </ul>
-          </li>
-        </ul>
-      </div>
+        </div>
     </div>
-  </nav>  
+</nav>
+
+
 <br>
 <!-- Hamburger Button for Chats -->
 <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasLeft" aria-controls="offcanvasLeft" style="margin-left: 10px;">
@@ -68,7 +69,7 @@
 <body class="text-bg-light">
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasLeft" aria-labelledby="offcanvasLeftLabel" style="background-color:#72DEC3;"">
         <div class="offcanvas-header">
-          <h2 class="offcanvas-title" id="offcanvasLeftLabel" style="text-align:center;"> Previous Chats</h2>
+          <h2 class="offcanvas-title" id="offcanvasLeftLabel" style="text-align:center;">History</h2>
           <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
@@ -85,6 +86,13 @@
     <!-- Sec nav -->
     
   </header>
+  <br>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert" style="text-align:center;">
+    <strong>Note: Requirement generation of E-commerce systems is currently supported by RequirementSage Chatbot. 
+    {% comment %} <button type="button" class="close" data-dismiss="alert" aria-label="Close"> {% endcomment %}
+      {% comment %} <span aria-hidden="true">&times;</span>
+    </button> {% endcomment %}
+  </div>
   
 {% comment %} Questions Cards {% endcomment %}
   <main class="mt-3">
@@ -93,8 +101,8 @@
       <div class="col-md-3 mb-4">
         <div class="card">
           <div class="card-body">
-            <button class="btn btn-secondary" type="button" onclick="sendQuery('Question 1')">
-            <p class="card-text" style=>What are the essential features of an E-commerce system?</p>
+            <button class="btn btn-secondary" type="button" onclick="fillInput('What are the high level requirements of an E-commerce system')">
+            <p class="card-text" style=>What are the high level requirements of an E-commerce system?</p>
         </button>
           </div>
         </div>
@@ -102,8 +110,8 @@
       <div class="col-md-3 mb-4">
         <div class="card">
           <div class="card-body">
-            <button class="btn btn-secondary" type="button" onclick="sendQuery('Question 1')">
-            <p class="card-text">What are the essential features of an E-commerce system?</p>
+            <button class="btn btn-secondary" type="button" onclick="fillInput('Question 2')>
+            <p class="card-text">What are low level requirements to ensure data security and privacy?</p>
         </button>
           </div>
         </div>
@@ -111,8 +119,8 @@
       <div class="col-md-3 mb-4">
         <div class="card">
           <div class="card-body">
-            <button class="btn btn-secondary" type="button" onclick="sendQuery('Question 1')">
-            <p class="card-text">What are the essential features of an E-commerce system?</p>
+            <button class="btn btn-secondary" type="button" onclick="fillInput('Question 3')">
+            <p class="card-text">How does the E-commerce store support promotional offers and discounts?</p>
         </button>
           </div>
         </div>
@@ -120,8 +128,8 @@
       <div class="col-md-3 mb-4">
         <div class="card">
           <div class="card-body">
-            <button class="btn btn-secondary" type="button" onclick="sendQuery('Question 1')">
-            <p class="card-text">What are the essential features of an E-commerce system?</p>
+            <button class="btn btn-secondary" type="button" onclick="fillInput('Question 4')">
+            <p class="card-text">How does the E-commerce system manage inventory and stock availability?</p>
         </button>
           </div>
         </div>
@@ -134,7 +142,7 @@
     <div class="container d-flex justify-content-center">
       <div class="card text-center" style="width: 50%; background-color:#1FDEC3;">
         <div class="card-body" style="background-color:#24798C;">
-          <form method="POST">
+          <form method="POST" id="chatForm">
             {% csrf_token %}
             <div class="input-group">
               <input type="text" name="queryinput" class="form-control bg-light" placeholder="How can I assist you with your E-commerce system?" >
@@ -152,6 +160,8 @@
     </div>
   </nav>  
 </footer>
+
+
 
 
   <!-- Bootstrap JavaScript Libraries -->
@@ -184,23 +194,80 @@
     integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
   </script>
 
-<!-- Mov- this -to- JavaScript  -->
-<script>   
-  const text = document.getElementById("myText2").textContent;
-    let i = 0;
+  <!-- HTML Structure -->
+  <div id="checkboxContainer"></div>
   
-    function typeText() {
-      if (i < text.length) {
-        document.getElementById("myText2").innerHTML = text.substring(0, i) + "|";
-        i++;
-        setTimeout(typeText, 20); // Adjust the typing speed here
-      } else {
-        document.getElementById("myText2").innerHTML = text;
+  <script>
+    const text = "Your generated text from the chatbot with numbers (1-10), commas, and full stops.";
+  
+    function generateCheckboxes() {
+      const checkboxContainer = document.getElementById("checkboxContainer");
+      let checkboxIndex = 1;
+      let currentText = '';
+  
+      for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+  
+        if (/[1-9]/.test(char)) {
+          currentText += char;
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkbox.id = `checkbox-${checkboxIndex}`;
+          checkbox.value = currentText;
+          checkboxContainer.appendChild(checkbox);
+  
+          const label = document.createElement("label");
+          label.htmlFor = `checkbox-${checkboxIndex}`;
+          label.appendChild(document.createTextNode(currentText + ": "));
+          checkboxContainer.appendChild(label);
+  
+          currentText = '';
+          checkboxIndex++;
+        } else if (char === ',' || char === '.') {
+          if (currentText !== '') {
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.id = `checkbox-${checkboxIndex}`;
+            checkbox.value = currentText;
+            checkboxContainer.appendChild(checkbox);
+  
+            const label = document.createElement("label");
+            label.htmlFor = `checkbox-${checkboxIndex}`;
+            label.appendChild(document.createTextNode(currentText));
+            checkboxContainer.appendChild(label);
+  
+            currentText = '';
+            checkboxIndex++;
+          }
+        } else {
+          currentText += char;
+        }
       }
     }
   
-    typeText();
-</script>
+    generateCheckboxes();
+  
+    // Handling storing checked items in the database (you need to implement this part)
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+          // Store the checked item in the database
+          console.log(`Stored: ${checkbox.value}`);
+        } else {
+          // Handle unchecked item if needed
+          console.log(`Removed: ${checkbox.value}`);
+        }
+      });
+    });
+  </script>
+  
+  <script>
+    function fillInput(questionText) {
+        document.getElementById('queryInput').value = questionText;
+        document.getElementById('chatForm').submit();
+    }
+  </script>
 <!-- End- this -to- JavaScript  -->
 
 
