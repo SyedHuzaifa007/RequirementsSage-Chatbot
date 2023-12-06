@@ -146,7 +146,7 @@ def forgot(request):
 
     return render(request, 'password_reset.html', {'form': form})   
 def forgotdone(request):
-    return render(request,"login.html")
+    return render(request,"xhatapp/login.html")
 
 
 def chatbot_view(request):
@@ -191,3 +191,49 @@ def export_to_pdf(request):
 
 def download(request):
         return render(request,'Download.html')
+def Account(request):
+        return render(request,'Account_Settings.html')
+        
+from .models import UserInfo
+from django.contrib.auth.decorators import login_required
+from .form import UserProfileForm
+
+def profile_view(request):
+    user_profile = request.user.userinfo
+
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, instance=user_profile)
+        if form.is_valid():
+            form.save()
+            return redirect('profile_view')
+    else:
+        form = UserProfileForm(instance=user_profile)
+
+    return render(request, 'Account_Settings.html', {'user_profile': user_profile, 'form': form})
+
+from django.shortcuts import render, redirect
+from .form import SignupForm
+from .models import UserProfile
+
+def signup_view(request):
+    if request.method == 'POST':
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            # Check if passwords match
+            if form.cleaned_data['password'] != form.cleaned_data['confirm_password']:
+                return render(request, 'signup.html', {'form': form, 'error': 'Passwords do not match'})
+
+            # Create a new user profile (you should hash the password before saving)
+            new_user = UserProfile(
+                name=form.cleaned_data['name'],
+                email=form.cleaned_data['email'],
+                password=form.cleaned_data['password']
+            )
+            new_user.save()
+
+            # Redirect to a success page or login page
+            return redirect('success_page')
+    else:
+        form = SignupForm()
+
+    return render(request, 'signup.html', {'form': form})
