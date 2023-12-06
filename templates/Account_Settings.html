@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Settings</title>
+  <style>
+    .body
+    {
+        max-width: 1600px;
+        max-height: 900px;
+    }
+    .Setting {
+      width: 1600px;
+      height: 900px;
+      position: relative;
+      border-radius: 50px;
+    }
+
+    .Rectangle8 {
+      width:1600px;
+      height: 800px;
+      left: 0px;
+      top: 0px;
+      position: absolute;
+      background: white;
+    }
+
+    .Rectangle1 {
+      width: 1589px;
+      height: 732.04px;
+      left: 165.93px;
+      top: 166.77px;
+      position: absolute;
+      background: #249CB7;
+      border-radius: 20px;
+    }
+
+    .Name,
+    .ProfilePicture,
+    .Email,
+    .Password {
+      width: 430px;
+      height: 61px;
+      top:-100px;
+      position: absolute;
+      text-align: center;
+      color: #EBEBEB;
+      font-size: 35px;
+      font-family: Inder;
+      font-weight: 400;
+      word-wrap: break-word;
+    }
+
+    .Name {
+      left: 132px;
+      top: 346px;
+    }
+
+    .ProfilePicture {
+      left: 1235px;
+      top: 272px;
+    }
+
+    .Email {
+      left: 132px;
+      top: 501px;
+    }
+
+    .Password {
+      left: 106px;
+      top: 654px;
+    }
+
+    .Group16,
+    .Group17,
+    .Group13 {
+      width: 420px;
+      height: 63px;
+      position: absolute;
+      left: 431px;
+    }
+
+    .Rectangle2 {
+      width: 420px;
+      height: 63px;
+      left: 0px;
+      top: 0px;
+      position: absolute;
+      background: white;
+      border-radius: 20px;
+    }
+
+    .Group14 {
+      width: 576px;
+      height: 61px;
+      position: absolute;
+      left: 353px;
+      top: 315px;
+    }
+
+    .EditAccountInformation {
+      width: 576px;
+      height: 61px;
+      position: absolute;
+      left: 0px;
+      top: -100px;
+      text-align: center;
+      color: #EBEBEB;
+      font-size: 38px;
+      font-family: Inder;
+      font-weight: 400;
+      word-wrap: break-word;
+    }
+
+    .Vector {
+      width: 53px;
+      height: 47px;
+      top:-100px;
+      position: absolute;
+      background: #EBEBEB;
+    }
+
+    .UserCicrle {
+      width: 368px;
+      height: 368px;
+      position: absolute;
+      left: 1271px;
+      top: 350px;
+    }
+
+    .Ellipse46 {
+      width: 92px;
+      height: 92px;
+      left: 138px;
+      top: 107.33px;
+      position: absolute;
+      border-radius: 9999px;
+      border: 2px #33363F solid;
+    }
+
+    .Ellipse47 {
+      width: 276px;
+      height: 276px;
+      left: 46px;
+      top: 46px;
+      position: absolute;
+      border-radius: 9999px;
+      border: 2px #33363F solid;
+    }
+
+    .Ellipse48 {
+      width: 184px;
+      height: 107.33px;
+      left: 92px;
+      top: 230px;
+      position: absolute;
+      background: #33363F;
+    }
+
+    .Group15 {
+      width: 430px;
+      height: 61px;
+      position: absolute;
+      left: 1240px;
+      top: 793px;
+    }
+
+    .UpdateProfilePicture {
+      width: 430px;
+      height: 61px;
+      position: absolute;
+      left: 0px;
+      top: -100px;
+      text-align: center;
+      color: #EBEBEB;
+      font-size: 30px;
+      font-family: Inder;
+      font-weight: 400;
+      text-decoration: underline;
+      word-wrap: break-word;
+    }
+
+    .PencilOutline {
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      left: 28px;
+      top: -103px;
+    }
+
+    .Save {
+      width: 331px;
+      height: 67px;
+      position: absolute;
+      left: 464px;
+      top: 854px;
+    }
+
+    .Rectangle5 {
+      width: 330px;
+      height: 67px;
+      position: absolute;
+      left: -130px;
+      top: -30px;
+      background:
+      #97CBD7;
+    }
+
+    .SaveText {
+      width: 330px;
+      height: 65px;
+      position: absolute;
+      left: -130px;
+      top: -10px;
+      text-align: center;
+      color: black;
+      font-size: 22px;
+      font-family: Inter;
+      font-weight: 300;
+      word-wrap: break-word;
+    }
+
+    .Requirementsage {
+      width: 311px;
+      height: 66px;
+      position: absolute;
+      left: 1492px;
+      top: 47px;
+      color: black;
+      font-size: 35px;
+      font-family: Inter;
+      font-weight: 600;
+      word-wrap: break-word;
+    }
+
+    .Hamburger {
+      width: 100px;
+      height: 85px;
+      position: absolute;
+      left: 1403px;
+      top:48px;
+    }
+
+    .Ellipse2 {
+      width: 100px;
+      height: 85px;
+      position: absolute;
+      left: 0px;
+      top: 0px;
+ 
+      border-radius: 9999px;
+    }
+
+    .HamburgerVector {
+      width: 45px;
+      height: 32.55px;
+      position: absolute;
+      left: 27px;
+      top: 26.22px;
+    }
+
+    .Vector {
+      width: 45px;
+      height: 32.55px;
+      position: absolute;
+      left: 0px;
+      top: -90px;
+    }
+
+    .Group18 {
+      width: 100px;
+      height: 94px;
+      position: absolute;
+      left: 65px;
+      top: 54px;
+    }
+
+    .Ellipse3 {
+      width: 100px;
+      height: 94px;
+      position: absolute;
+      left: 0px;
+      top: 0px;
+     
+      border-radius: 20px;
+    }
+
+    .Arrow3 {
+      width: 50px;
+      height: 0px;
+      position: absolute;
+      left: 75px;
+      top: 47px;
+      transform: rotate(-180deg);
+      transform-origin: 0 0;
+      border: 6px black solid;
+    }
+
+    .Component5 {
+      width: 268px;
+      height: 78px;
+      position: absolute;
+      left: 803px;
+      top: 1087px;
+    }
+
+    .Component5Default {
+      width: 268px;
+      height: 78px;
+      position: absolute;
+      left: 0px;
+      top: 0px;
+    }
+
+    .Rectangle33 {
+      width: 268px;
+      height: 78px;
+      position: absolute;
+      left: 500px;
+      top: -275px;
+      background: #D9D9D9;
+    }
+
+    .LogOut {
+      width: 165px;
+      height: 39px;
+      position: absolute;
+      left:550px;
+      top: -250px;
+      text-align: center;
+      color: black;
+      font-size: 27px;
+      font-family: Inter;
+      font-weight: 300;
+      word-wrap: break-word;
+    }
+
+    .Abc {
+        background-color: #EBEBEB;
+        width: 500px;
+      height: 50px;
+      position: absolute;
+      left: 402px;
+      top: 342px;
+    border-radius: 20px;;
+      color: black;
+      font-size: 35px;
+      font-family: Inder;
+      font-weight: 400;
+      word-wrap: break-word;
+    }
+
+    .AbcGmailCom {
+        background-color: #EBEBEB;
+        width: 500px;
+      height: 50px;
+      position: absolute;
+      left: 419px;
+      top: 496px;
+      border-radius: 20px;;
+      color: black;
+      font-size: 35px;
+      font-family: Inder;
+      font-weight: 400;
+      word-wrap: break-word;
+    }
+
+    .Dots {
+     background-color: #EBEBEB;
+      width: 500px;
+      height: 50px;
+      position: absolute;
+      left: 362px;
+      top: 590px;
+      border-radius: 20px;;
+      color: black;
+      font-size: 35px;
+      font-family: Inder;
+      font-weight: 400;
+      word-wrap: break-word;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="Setting">
+    <div class="Rectangle8"></div>
+    <div class="Rectangle1"></div>
+    <div class="Name">Name</div>
+    <div class="ProfilePicture">Profile Picture</div>
+    <div class="Email">Email:</div>
+    <div class="Password">Password:</div>
+    <div class="Group16">
+      <div class="Rectangle2"></div>
+    </div>
+    <div class="Group17">
+      <div class="Rectangle2"></div>
+    </div>
+    <div class="Group13">
+      <div class="Rectangle2"></div>
+    </div>
+    <div class="Group14">
+      <div class="EditAccountInformation">
+        Edit Account Information
+      </div>
+      <div class="Vector">
+        {% load static %}
+    <img src="{% static 'Clip.png' %}" alt="Edit PFP" width="50" height="50">
+      </div>
+    </div>
+    <div class="UserCicrle">
+{% load static %}
+    <img src="{% static 'ACC.png' %}" alt="Edit PFP" width="350" height="300">
+    </div>
+    <div class="Group15">
+      <div class="UpdateProfilePicture">
+        Update Profile Picture
+      </div>
+      <div class="PencilOutline">
+        <div>       
+              {% load static %} 
+                <img style="border-radius: 20px;"  src="{% static 'pen.avif' %}" alt="Edit PFP" width="50" height="50">
+        </div>
+      </div>
+    </div>
+    <div class="Save">
+      <div class="Rectangle5"> </div>
+      <div class="SaveText"><a href="{% url 'xhat' %}">Save</a></div>
+    </div>
+    <div class="Requirementsage">RequirementSage</div>   
+    <div class="Hamburger"> 
+        {% load static %}
+    <img style="border-radius: 50px;" src="{% static 'Ham.png' %}" alt="Edit PFP" width="50" height="50"> 
+      <div class="Ellipse2">
+        <div class="HamburgerVector"></div>
+      </div>
+    </div>
+    <div class="Group18">
+      <div class="Ellipse3">
+        {% load static %}
+        <img style="border-radius: 50px;" src="{% static 'back.png' %}"  alt="Edit PFP" width="50" height="50"><a  href="{% url 'xhat' %}">ㅤ</a>
+      </div>
+     
+    </div>
+    <div class="Component5">
+      <div class="Component5Default">
+        <div class="Rectangle33"></div>
+        <div class="LogOut"><a href="{% url 'login' %}">Log Out</a></div>
+      </div>
+    </div>
+ <!-- Add this to your HTML template where you want to show the existing username -->
+<!-- Display existing username -->
+<div class="Abc">ㅤ{{ user.username }}</div>
+
+    <div class="AbcGmailCom">ㅤ{{ user.email }}</div>
+    <div class="Dots" style="top:650px;left:410px">ㅤ****</div>
+  </div>
+</body>
+
+</html>

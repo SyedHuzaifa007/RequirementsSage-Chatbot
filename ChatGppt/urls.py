@@ -34,4 +34,5 @@ urlpatterns = [
     path('export-to-pdf/', export_to_pdf, name='export_to_pdf'),
     path('login',views.forgotdone,name="login"),
     path('Download',views.download,name="Download"),
+    path('Account_Settings.html',views.Account,name="Account"),
   ]

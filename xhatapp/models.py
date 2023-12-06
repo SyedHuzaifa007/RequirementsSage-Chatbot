@@ -3,6 +3,10 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 # from datetime import date
 # Create your models here.
+# models.py
+from django.db import models
+
+
 
 class SaveQueries(models.Model):
     question = models.CharField(null=False,max_length=2800) # jst limiting !!
@@ -14,8 +18,12 @@ class SaveQueries(models.Model):
         return self.question + " " + self.returnquery
 
 
+from django.contrib.auth.models import User
+from django.db import models
+
 class UserInfo(models.Model):
-    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    username = models.CharField(max_length=100)
 
     def __str__(self):
         return self.user.username
@@ -26,3 +34,8 @@ class SelectedItems(models.Model):
 
     def __str__(self):
         return self.selected_item
+
+class UserProfile(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.EmailField(unique=True)
+    password = models.CharField(max_length=255)  # You should hash the password before storing it

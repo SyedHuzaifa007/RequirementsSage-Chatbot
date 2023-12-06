@@ -65,7 +65,7 @@
   <div class="container">
     <div class="form-container">
       <h1>Let's Get Started!</h1>
-      <form method="POST" enctype="multipart/form-data">
+      <form method="POST" action="{% url 'login' %}" enctype="multipart/form-data">
         {% csrf_token %}
         <input type="text" name="name" placeholder="Name">
         <input type="email" name="email" placeholder="Email">
