@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project Proposal</title>
+    <!-- Add any necessary CSS styling -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        .proposal-container {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .timestamp {
+            font-size: 12px;
+            color: #888;
+        }
+        h2 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Project Proposal</h1>
+    <p>Name: {{ user_name }}</p>
+    <p class="timestamp">Time: {{ timestamp }}</p>
+    <h2>Project Scope</h2>
+    <p>{{ project_scope }}</p>
+    <h2>Main Features</h2>
+    <p>{{ project_main_features }}</p>
+    <h2>Functional Requirements</h2>
+    <p>{{ functional_requirements }}</p>
+    <h2>Business Requirements</h2>
+    <p>{{ business_requirements }}</p>
+    <h2>Non-Functional Requirements</h2>
+    <p>{{ non_functional_requirements }}</p>
+    <p>Result: {{ result }}</p>
+    <!-- Project Proposal Content -->
+    <div class="proposal-container">        
+    </div>
+    <!-- Additional formatting or content for the project proposal -->
+</body>
+</html>

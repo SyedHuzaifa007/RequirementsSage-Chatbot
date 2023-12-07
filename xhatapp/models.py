@@ -39,3 +39,15 @@ class UserProfile(models.Model):
     name = models.CharField(max_length=255)
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=255)  # You should hash the password before storing it
+
+class ProjectDetails(models.Model):
+    user_name = models.CharField(max_length=100)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    project_scope = models.TextField()
+    project_main_features = models.TextField()
+    functional_requirements = models.TextField()
+    business_requirements = models.TextField()
+    non_functional_requirements = models.TextField()
+
+    def __str__(self):
+        return f"{self.user_name} - {self.timestamp}"

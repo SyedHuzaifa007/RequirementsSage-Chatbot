@@ -8,11 +8,9 @@ from django.http import HttpResponse
 from reportlab.pdfgen import canvas
 from django.contrib.auth.models import AnonymousUser
 from .models import SelectedItems
+from django.template.loader import render_to_string
+from xhtml2pdf import pisa
 
-# Create your views here.
-
-
-###################### -login
 from django.contrib.auth import authenticate,login,logout
 from django.http import HttpResponse,HttpResponseRedirect
 from django.urls import reverse
@@ -31,6 +29,8 @@ from django.utils.encoding import force_bytes
 from django.template.loader import render_to_string
 from django.http import HttpResponseBadRequest
 from django.http import JsonResponse
+from .models import ProjectDetails
+from django.views.decorators.csrf import csrf_protect
 
 
 # initializing 
@@ -46,10 +46,11 @@ def index(request):
 def about(request):
     return render(request, 'xhatapp/about.html')
 
+result = ""
 @login_required
 def query(request):
     nice = ""
-    result = "....."
+    result = "....." 
     
     if request.method == 'POST':
         user_input = request.POST.get('queryinput') + "of E-commerce store only"
@@ -77,6 +78,24 @@ def is_within_scope(user_input):
         if ("e-commerce" or "E-commerce" or "e commerce" or "E commerce" or "E com" or "online store" or "Online Store" or "Online Shopping" or "online shopping") and keyword.lower() in user_input.lower():
             return True
     return False
+
+
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+
+@csrf_exempt  # Use this decorator to allow POST requests without CSRF token validation for simplicity (use a proper CSRF protection in production)
+def save_response_to_file(request):
+    if request.method == 'POST':
+        response_data = request.POST.get(result, '')  # Assuming the chatbot response is sent as a POST parameter named 'response'
+        
+        # Save the response to a file (chatbot_response.html)
+        with open('chatbot_response.html', 'w') as file:
+            file.write(response_data)
+
+        return JsonResponse({'status': 'success'})  # Return a JSON response indicating success
+    else:
+        return JsonResponse({'status': 'error', 'message': 'Invalid request method'}, status=400)  # Return an error if the request method is not POST
+
 
 def create(request):
     acc_created = False
@@ -237,3 +256,29 @@ def signup_view(request):
         form = SignupForm()
 
     return render(request, 'signup.html', {'form': form})
+
+
+
+from django.http import HttpResponse
+from django.template.loader import render_to_string
+from xhtml2pdf import pisa
+
+def generate_pdf(request):
+    # Get chatbot response (replace this with your actual response)
+    chatbot_response = "This is the chatbot response."
+
+    # Render the chatbot response into HTML using a Django template
+    rendered_html = render_to_string('chatbot_response.html', {'response': chatbot_response})
+
+    # Prepare a PDF file using xhtml2pdf
+    pdf_file = HttpResponse(content_type='application/pdf')
+    pdf_file['Content-Disposition'] = 'attachment; filename="project_proposal.pdf"'
+
+    # Generate PDF content using pisa.CreatePDF
+    pisa.CreatePDF(
+        rendered_html,  # HTML content
+        dest=pdf_file   # Output file (HttpResponse object)
+    )
+
+    return pdf_file
+

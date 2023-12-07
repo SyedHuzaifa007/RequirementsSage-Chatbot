@@ -18,6 +18,7 @@ from django.urls import path,include
 from xhatapp import views
 from django.contrib.auth import views as auth_views
 from xhatapp.views import chatbot_view, export_to_pdf
+from xhatapp.views import query, generate_pdf
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -35,4 +36,7 @@ urlpatterns = [
     path('login',views.forgotdone,name="login"),
     path('Download',views.download,name="Download"),
     path('Account_Settings.html',views.Account,name="Account"),
+    path('generate-pdf/', views.generate_pdf, name='generate_pdf'),
+    path('query/', query, name='query'),
+    path('generate_pdf/', generate_pdf, name='generate_pdf'), 
   ]
